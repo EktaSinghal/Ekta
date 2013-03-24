@@ -1,0 +1,35 @@
+Enter user information
+<%= form_for @user do |f| %>
+	<%= f.label :firstname, "First Name" %>
+	<%= f.text_field :firstname %><br/>
+	
+	<%= f.label :lastname, "Last Name" %>
+	<%= f.text_field :lastname %><br/>
+
+	<%= f.label :email, "Email" %>
+	<%= f.text_field :email %><br/>
+	
+	<%= f.label :username, "Username" %>
+	<%= f.text_field :username %><br/>
+	
+	<%= f.label :password, "Password" %>
+	<%= f.password_field :password %><br/>
+	
+	<%= f.label :cpassword, "Confirm Password" %>
+	<%= f.password_field :cpassword %><br/>
+	
+	<%= f.submit %> 
+<% end %>
+<% if !flash[:error].nil? %>
+ <div class="alert alert-error">
+    <button type="button" class="close" data-dismiss="alert" >×</button>
+    <strong><%= flash[:error] %></strong>
+    </div>
+<% end %>
+
+<% if flash[:success] %>
+   <div class="alert alert-success">
+     <button type="button" class="close" data-dismiss="alert">×</button>
+      <strong><%= flash[:success] %></strong>
+   </div>
+  <% end %>
