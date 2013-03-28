@@ -1,5 +1,14 @@
 Enter user information
 <%= form_for @user do |f| %>
+	<% if @user.errors.any? %>
+		<h2>Form is invalid</h2>
+		<ul>
+			<% for message in @user.errors.full_messages %>
+				<li><%= message %></li>
+			<% end %>
+		</ul>
+	<% end %>
+	
 	<%= f.label :firstname, "First Name" %>
 	<%= f.text_field :firstname %><br/>
 	
@@ -20,16 +29,10 @@ Enter user information
 	
 	<%= f.submit %> 
 <% end %>
+
 <% if !flash[:error].nil? %>
  <div class="alert alert-error">
     <button type="button" class="close" data-dismiss="alert" >×</button>
     <strong><%= flash[:error] %></strong>
     </div>
 <% end %>
-
-<% if flash[:success] %>
-   <div class="alert alert-success">
-     <button type="button" class="close" data-dismiss="alert">×</button>
-      <strong><%= flash[:success] %></strong>
-   </div>
-  <% end %>

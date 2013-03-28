@@ -1,7 +1,8 @@
 Ekta::Application.routes.draw do
   resource :users
-  get "users/login"
-   match "page/login"=>"page#login", :via => :post
+  resource :logins
+  resource :homes
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
